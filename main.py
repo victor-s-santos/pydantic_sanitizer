@@ -1,5 +1,5 @@
 from csv import DictReader
-from pydantic import BaseModel
+from pydantic import BaseModel, conint
 import logging
 
 
@@ -28,17 +28,17 @@ class DadoCSV(BaseModel):
 
     Company: str
     Item: str
-    Calories: int
-    CaloriesFromFat: int
-    TotalFat: float | int
-    SaturatedFat: float | int
-    TransFat: float | int
-    Cholesterol: int
-    Sodium: int
-    Carbs: float | int
-    Fiber: float | int
-    Sugars: float | int
-    Protein: float | int
+    Calories: conint(gt=0)
+    CaloriesFromFat: conint(gt=0)
+    TotalFat: float | conint(gt=0)
+    SaturatedFat: float | conint(gt=0)
+    TransFat: float | conint(gt=0)
+    Cholesterol: conint(gt=0)
+    Sodium: conint(gt=0)
+    Carbs: float | conint(gt=0)
+    Fiber: float | conint(gt=0)
+    Sugars: float | conint(gt=0)
+    Protein: float | conint(gt=0)
     WeightWatchersPnts: float | str | None
 
 
