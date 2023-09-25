@@ -1,5 +1,5 @@
 from csv import DictReader
-from pydantic import BaseModel, FieldValidationInfo, field_validator
+from pydantic import BaseModel
 import logging
 
 
@@ -30,49 +30,16 @@ class DadoCSV(BaseModel):
     Item: str
     Calories: int
     CaloriesFromFat: int
-    # TODO fix the keys name
-    # TotalFat_g: float
-    # SaturatedFat_g: float
-    # TransFat_g: float
-    # Cholesterol_mg: int
-    # Sodium_mg: int
-    # Carbs_g: float
-    # Fiber_g: float
-    # Sugars_g: float
-    # Protein_g: float
-    WeightWatchersPnts: float
-
-    @field_validator("Company")
-    @classmethod
-    def validate_company(cls, value: str, info: FieldValidationInfo) -> str:
-        logging.info(info.config.get("title"))
-        return value
-
-    @field_validator("Item")
-    @classmethod
-    def validate_item(cls, value: str, info: FieldValidationInfo) -> str:
-        logging.info(info.config.get("title"))
-        return value
-
-    @field_validator("Calories")
-    @classmethod
-    def validate_calories(cls, value: int, info: FieldValidationInfo) -> int:
-        logging.info(info.config.get("title"))
-        return value
-
-    @field_validator("CaloriesFromFat")
-    @classmethod
-    def validate_caloriesfromfat(cls, value: int, info: FieldValidationInfo) -> int:
-        logging.info(info.config.get("title"))
-        return value
-
-    @field_validator("WeightWatchersPnts")
-    @classmethod
-    def validate_weightwatcherspnts(
-        cls, value: float, info: FieldValidationInfo
-    ) -> float:
-        logging.info(info.config.get("title"))
-        return value
+    TotalFat: float | int
+    SaturatedFat: float | int
+    TransFat: float | int
+    Cholesterol: int
+    Sodium: int
+    Carbs: float | int
+    Fiber: float | int
+    Sugars: float | int
+    Protein: float | int
+    WeightWatchersPnts: float | str | None
 
 
 if __name__ == "__main__":
